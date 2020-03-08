@@ -6,22 +6,24 @@
     NIF api obj -> Lungo api obj
 
 """
-import typings.helpers as helpers
+from .helpers import unpack, snake_case, del_by_value, del_whitelist, rename_keys
+from .activities import Activities
+from .activity import Activity
+from .orgstructure import OrgStructure
+from .contact import Contact
+from .account import Account
 
-from typings.activities import Activities
-from typings.activity import Activity
-from typings.orgstructure import OrgStructure
-from typings.contact import Contact
-from typings.account import Account
+
 # from typings.fixes import fix_organization
-from settings import NLF_ORG_STRUCTURE
 
 
 class Organization:
-    def __init__(self, organization):
+    def __init__(self, organization, org_structure):
+
+        self.ORG_STRUCTURE = org_structure
 
         if isinstance(organization, dict) is not True and 'Org' in organization:
-            status, self.value = helpers.unpack(organization, 'Org')
+            status, self.value = unpack(organization, 'Org')
         else:
             self.value = organization
 
@@ -35,18 +37,18 @@ class Organization:
 
     def _map(self):
 
-        rename_keys = [
+        keys = [
             ('id', 'org_id'),
             ('type_id', 'organization_type_id'),
             ('parent_id', 'parent_organization_id'),
             ('authority_id', 'register_authority_organization_number')
         ]
 
-        self.value = helpers.snake_case(self.value)
+        self.value = snake_case(self.value)
 
-        self.value = helpers.del_by_value(self.value, None)
+        self.value = del_by_value(self.value, None)
 
-        self.value['contact'] = Contact(self.value['contact']).value
+        self.value['contact'] = Contact(self.value.get('contact', {})).value
 
         if 'org_structures_down' in self.value:
             self.value['_down'] = OrgStructure(self.value['org_structures_down'], 'child').value
@@ -71,13 +73,13 @@ class Organization:
         if 'account' in self.value:
             self.value['account'] = Account(self.value['account']).value
 
-        self.value = helpers.del_whitelist(self.value, self.whitelist)
-        self.value = helpers.rename_keys(self.value, rename_keys)
+        self.value = del_whitelist(self.value, self.whitelist)
+        self.value = rename_keys(self.value, keys)
 
         # Fix all type_id = 19
         # if self.value.get('type_id', 0) == 19:
         #    self.value = fix_organization(self.value)
 
-        if self.value['id'] in list(NLF_ORG_STRUCTURE.keys()):
-            self.value['activities'] = [NLF_ORG_STRUCTURE[self.value['id']]]
-            self.value['main_activity'] = NLF_ORG_STRUCTURE[self.value['id']]
+        if self.value['id'] in list(self.ORG_STRUCTURE.keys()):
+            self.value['activities'] = [self.ORG_STRUCTURE[self.value['id']]]
+            self.value['main_activity'] = self.ORG_STRUCTURE[self.value['id']]

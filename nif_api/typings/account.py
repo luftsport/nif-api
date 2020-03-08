@@ -1,4 +1,4 @@
-import typings.helpers as helpers
+from .helpers import snake_case
 
 
 class Account:
@@ -12,4 +12,4 @@ class Account:
 
     def _map(self):
 
-        self.value = helpers.snake_case(self.value)
+        self.value = snake_case(self.value)

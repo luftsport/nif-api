@@ -1,10 +1,10 @@
-import typings.helpers as helpers
-from typings.competence import Competence
+from .helpers import unpack
+from .competence import Competence
 
 
 class Competences:
     def __init__(self, competences):
-        self.status, value = helpers.unpack(competences, 'Competences', True)
+        self.status, value = unpack(competences, 'Competences', True)
 
         if self.status is True:
             self.value = value.get('Competence', [])

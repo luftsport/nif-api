@@ -1,11 +1,11 @@
-import typings.helpers as helpers
-from typings.organization import Organization
+from .helpers import unpack
+from .organization import Organization
 
 
 class Organizations:
-    def __init__(self, organizations):
-
-        self.status, value = helpers.unpack(organizations, 'Orgs')
+    def __init__(self, organizations, org_structure):
+        self.ORG_STRUCTURE = org_structure
+        self.status, value = unpack(organizations, 'Orgs')
 
         if self.status is True:
             self.value = value.get('OrgPublic', [])
@@ -17,6 +17,6 @@ class Organizations:
 
         new_value = []
         for item in self.value:
-            new_value.append(Organization(item).value)
+            new_value.append(Organization(item, self.ORG_STRUCTURE).value)
 
         self.value = new_value

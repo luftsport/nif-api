@@ -1,4 +1,4 @@
-from typings.helpers import del_keys, del_by_value
+from .helpers import del_keys, del_by_value
 
 
 class Contact:

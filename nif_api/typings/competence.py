@@ -1,4 +1,4 @@
-import typings.helpers as helpers
+from .helpers import snake_case, del_by_value, rename_keys
 
 
 class Competence:
@@ -11,17 +11,17 @@ class Competence:
         self._map()
 
     def _map(self):
-        rename_keys = [('id', 'competence_id'),
-                       ('sald', 'competence_sald'),
-                       ('title', 'competence_title'),
-                       ('type_id', 'competence_type_id'),
-                       ('additional_title', 'additional_competence_title'),
-                       ('approved_by_person_id', 'aprroved_by_person_id')
-                       ]
-        self.value = helpers.snake_case(self.value)
-        self.value = helpers.del_by_value(self.value, None)
-        self.value = helpers.del_by_value(self.value, '')
-        self.value = helpers.rename_keys(self.value, rename_keys)
+        keys = [('id', 'competence_id'),
+                ('sald', 'competence_sald'),
+                ('title', 'competence_title'),
+                ('type_id', 'competence_type_id'),
+                ('additional_title', 'additional_competence_title'),
+                ('approved_by_person_id', 'aprroved_by_person_id')
+                ]
+        self.value = snake_case(self.value)
+        self.value = del_by_value(self.value, None)
+        self.value = del_by_value(self.value, '')
+        self.value = rename_keys(self.value, keys)
 
         arr = self.value['title'].split(' - ')
         try:
@@ -35,4 +35,3 @@ class Competence:
             #    self.value['_name'] = ''
         except:
             pass
-

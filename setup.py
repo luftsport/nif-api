@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="nif-api",
-    version="0.1.0",
+    version="0.1.3",
     author="Einar Huseby",
     author_email="einar.huseby@gmail.com",
     description="A pythonic interface to NIF webservices using Zeep",
@@ -13,7 +13,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/luftsport/nif-api",
     packages=setuptools.find_packages(),
-    install_requires=['zeep', 'python-dateutil'],
+    install_requires=['zeep', 'python-dateutil', 'inflection'],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",

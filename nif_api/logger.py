@@ -9,14 +9,14 @@ class LoggingPlugin(Plugin):
     Will log all received (ingress) and sent (egress) messages
     """
 
-    def __init__(self):
+    def __init__(self, file_name):
         self.pretty_print = False
         self.logger = logging.getLogger('nif_integration')
         self.logger.setLevel(logging.DEBUG)
         self.formatter = logging.Formatter('[%(asctime)s] - %(name)s - %(levelname)s - %(message)s')
 
         if not len(self.logger.handlers):
-            self.fh = logging.FileHandler('logs/nif_integration_dst.log')
+            self.fh = logging.FileHandler(file_name)
             self.fh.setLevel(logging.DEBUG)
             self.fh.setFormatter(self.formatter)
             self.logger.addHandler(self.fh)

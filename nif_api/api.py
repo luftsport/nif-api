@@ -5,24 +5,33 @@ from zeep.wsse.username import UsernameToken
 from zeep.transports import Transport
 
 from .logger import LoggingPlugin
-from settings import NIF_SYNC_URL, NIF_INTEGRATION_URL, NIF_INTEGRATION_COMPETENCE_URL, NIF_COURSE2_URL, NIF_PERSON_URL, \
-    NIF_USER_URL, LOCAL_TIMEZONE
-from typings import Changes, Organizations, Organization, Persons, Functions, Competence, Competences, License, Hello, \
-    FunctionTypes, Countries, OrgLogo, Counties, LicensesStatus, LicenseTypes, Activities, OrganizationTypes
+from .typings import (Changes,
+                      Organizations,
+                      Organization,
+                      Persons,
+                      Functions,
+                      Competence,
+                      Competences,
+                      License,
+                      Hello,
+                      FunctionTypes,
+                      Countries,
+                      OrgLogo,
+                      Counties,
+                      LicensesStatus,
+                      LicenseTypes,
+                      Activities,
+                      OrganizationTypes,
+                      IntegrationUser)
 
 """
-from nif_api import NifApiCompetence, NifApiSynchronization, NifApiIntegration                                                                                                          
-from settings import NIF_FEDERATION_PASSWORD, NIF_FEDERATION_USERNAME                                                                                                                   
-from settings import ACLUBU, ACLUBP                                                                                                                                                     
-import datetime                                                                                                                                                                         
-comp = NifApiCompetence(NIF_FEDERATION_USERNAME,NIF_FEDERATION_PASSWORD)                                                                                                                
-api = NifApiIntegration(ACLUBU, ACLUBP)                                                                                                                                                 
-api.get_person(301041)                                                                                                                                                                  
-api = NifApiSynchronization(ACLUBU, ACLUBP)
-s = datetime.datetime.now() - datetime.timedelta(days=1)
-e = datetime.datetime.now()
-c = api.get_changes_payments(s,e)
+@TODO Remove this
+from os import getcwd
+DEFAULT_REALM = 'PROD'
+DEFAULT_LOG_FILE = '{}/nif_api.log'.format(getcwd())
 """
+
+
 class NIFApiError(Exception):
     """Base class"""
 
@@ -39,6 +48,10 @@ class NIFApiAuthenticationError(NIFApiError):
     """Authentication Error"""
 
 
+class NIFApiRealmError(NIFApiError):
+    """Realm Error"""
+
+
 class NifApi:
     """Uses zeep to get data from NIF API
     Will make all datefields timezone aware
@@ -46,10 +59,30 @@ class NifApi:
     @TODO implement client in NifApi. Then Hello test is reusable
     """
 
-    def __init__(self):
+    def __init__(self, realm, local_timezone='UTC'):
         """
         .. topic:: Timezone awareness
         """
+        if realm not in ['DEV', 'DST', 'PROD']:
+            raise NIFApiRealmError
+
+        if realm == 'PROD':
+            nif_base_url = 'https://services.nif.no/v4ws'
+        elif realm == 'DST':
+            nif_base_url = 'https://nswebdst.nif.no/v4ws'
+        elif realm == 'DEV':
+            nif_base_url = 'https://nswebdev.nif.no/v4ws'
+
+        self.LOCAL_TIMEZONE = local_timezone  # "Europe/Oslo"  UTC
+
+        # NIF common url's
+        self.NIF_SYNC_URL = '{}/SynchronizationService.svc?wsdl'.format(nif_base_url)
+        self.NIF_INTEGRATION_URL = '{}/IntegrationService.svc?wsdl'.format(nif_base_url)
+        self.NIF_INTEGRATION_COMPETENCE_URL = '{}/Competence2Service.svc?wsdl'.format(nif_base_url)
+        self.NIF_COURSE2_URL = '{}/Course2Service.svc?wsdl'.format(nif_base_url)
+        self.NIF_PERSON_URL = '{}/PersonService.svc?wsdl'.format(nif_base_url)
+        self.NIF_USER_URL = '{}/UserService.svc?wsdl'.format(nif_base_url)
+
         self.tz_local = tz.gettz("Europe/Oslo")
         self.tz_utc = tz.gettz('UTC')
 
@@ -70,13 +103,13 @@ class NifApi:
 
 
 class NifApiSynchronization(NifApi):
-    def __init__(self, username, password, test_login=True):
+    def __init__(self, username, password, realm, log_file, test_login=True):
 
-        super().__init__()
+        super().__init__(realm)
         transport = Transport(timeout=30)
-        self.client = Client(NIF_SYNC_URL,
+        self.client = Client(self.NIF_SYNC_URL,
                              wsse=UsernameToken(username, password),
-                             plugins=[LoggingPlugin()],
+                             plugins=[LoggingPlugin(log_file)],
                              transport=transport)
 
         # Sync client options
@@ -97,7 +130,7 @@ class NifApiSynchronization(NifApi):
             return True, Hello(hello).value
 
         except zeep.exceptions.Fault as e:
-            return False, e.message
+            return False, str(e)
 
     def get_changes(self, start_date, end_date):
         """Changes on person, organization and function"""
@@ -159,31 +192,32 @@ class NifApiSynchronization(NifApi):
         else:
             return False, self._error_wrapper(resp)
 
-    def create_integration_user(self, prefix, club_id, club_username_prefix, club_firstname_prefix,password ):
+    def create_integration_user(self, prefix, club_id, club_username_prefix, club_firstname_prefix, password):
         # The exception is caught in the call to _create.
 
         club_username = '{0}-{1}'.format(club_username_prefix, club_id)
         resp = self.client.service.CreateIntegrationUser(FirstName='{0}-{1}'.format(club_firstname_prefix,
-                                                                                             club_id),
-                                                                  LastName='NIF.Connect',
-                                                                  OrgId=club_id,
-                                                                  Password=password,
-                                                                  UserName=club_username)
+                                                                                    club_id),
+                                                         LastName='NIF.Connect',
+                                                         OrgId=club_id,
+                                                         Password=password,
+                                                         UserName=club_username)
         # Email=None)
 
-        if 'Success' in resp and resp.get('Success', False) is True:
-
-            return True, dict(serialize_object(resp))
+        if 'Success' in resp and resp['Success'] is True:
+            return True, IntegrationUser(resp).value
+        else:
+            return False, self._error_wrapper(resp)
 
 
 class NifApiCompetence(NifApi):
-    def __init__(self, username, password, test_login=True):
+    def __init__(self, username, password, realm, log_file, test_login=True):
 
-        super().__init__()
+        super().__init__(realm)
         transport = Transport(timeout=1000)
-        self.client = Client(NIF_INTEGRATION_COMPETENCE_URL,
+        self.client = Client(self.NIF_INTEGRATION_COMPETENCE_URL,
                              wsse=UsernameToken(username, password),
-                             plugins=[LoggingPlugin()],
+                             plugins=[LoggingPlugin(log_file)],
                              transport=transport)
 
         # self.ns4 = self.client.type_factory('ns4')
@@ -203,7 +237,7 @@ class NifApiCompetence(NifApi):
             return True, Hello(hello).value
 
         except zeep.exceptions.Fault as e:
-            return False, e.message
+            return False, str(e)
 
     def get_competence(self, competence_id):
 
@@ -239,13 +273,13 @@ class NifApiCompetence(NifApi):
 
 
 class NifApiCourse2(NifApi):
-    def __init__(self, username, password, test_login=True):
-        super().__init__()
+    def __init__(self, username, password, realm, log_file, test_login=True):
+        super().__init__(realm)
         transport = Transport(timeout=1000)
 
-        self.client = Client(NIF_COURSE2_URL,
+        self.client = Client(self.NIF_COURSE2_URL,
                              wsse=UsernameToken(username, password),
-                             plugins=[LoggingPlugin()],
+                             plugins=[LoggingPlugin(log_file)],
                              transport=transport)
 
         if test_login is True:
@@ -262,7 +296,7 @@ class NifApiCourse2(NifApi):
             return True, Hello(hello).value
 
         except zeep.exceptions.Fault as e:
-            return False, e.message
+            return False, str(e)
 
     def get_course(self, course_id):
         """@TODO No access"""
@@ -275,23 +309,24 @@ class NifApiCourse2(NifApi):
             # return True, Course(course).value
 
         except zeep.exceptions.Fault as e:
-            return False, e.message
+            return False, str(e)
 
 
 class NifApiPerson(NifApi):
-    def __init__(self, username, password):
+    def __init__(self, username, password, realm, log_file, test_login=True):
 
-        super().__init__()
+        super().__init__(realm)
         transport = Transport(timeout=1000)
-        self.client = Client(NIF_PERSON_URL,
+        self.client = Client(self.NIF_PERSON_URL,
                              wsse=UsernameToken(username, password),
-                             plugins=[LoggingPlugin()],
+                             plugins=[LoggingPlugin(log_file)],
                              transport=transport)
 
-        state, result = self._test()
+        if test_login is True:
+            state, result = self._test()
 
-        if state is not True:
-            raise NIFApiAuthenticationError('Could not authenticate via test')
+            if state is not True:
+                raise NIFApiAuthenticationError('Could not authenticate via test')
 
     def _test(self):
 
@@ -301,7 +336,7 @@ class NifApiPerson(NifApi):
             return True, Hello(hello).value
 
         except zeep.exceptions.Fault as e:
-            return False, e.message
+            return False, str(e)
 
     def login(self, username, password):
 
@@ -314,19 +349,20 @@ class NifApiPerson(NifApi):
 
 
 class NifApiIntegration(NifApi):
-    def __init__(self, username, password):
+    def __init__(self, username, password, realm, log_file, test_login=True):
 
-        super().__init__()
+        super().__init__(realm)
         transport = Transport(timeout=30)
-        self.client = Client(NIF_INTEGRATION_URL,
+        self.client = Client(self.NIF_INTEGRATION_URL,
                              wsse=UsernameToken(username, password),
-                             plugins=[LoggingPlugin()],
+                             plugins=[LoggingPlugin(log_file)],
                              transport=transport)
 
-        state, result = self._test()
+        if test_login is True:
+            state, result = self._test()
 
-        if state is not True:
-            raise NIFApiAuthenticationError('Could not authenticate via test')
+            if state is not True:
+                raise NIFApiAuthenticationError('Could not authenticate via test')
 
     def _test(self):
 
@@ -336,7 +372,7 @@ class NifApiIntegration(NifApi):
             return True, Hello(hello).value
 
         except zeep.exceptions.Fault as e:
-            return False, e.message
+            return False, str(e)
 
     def get_competence(self, competence_id) -> (bool, dict):
         raise Exception('Use NifApiCompetence!')
@@ -400,18 +436,18 @@ class NifApiIntegration(NifApi):
 
         raise NotImplementedError
 
-    def get_organization(self, organization_id) -> (bool, dict):
+    def get_organization(self, organization_id, org_structure) -> (bool, dict):
 
         try:
             resp = self.client.service.OrgGet(OrgId=organization_id)
-            return True, Organization(resp).value
+            return True, Organization(resp, org_structure).value
         except:
             try:
                 resp = self.client.service.OrganisationsGet(Ids=[organization_id])
-                organization = Organizations(resp)
+                organization = Organizations(resp, org_structure)
                 return True, organization.value[0]
             except Exception as e:
-                return False, {'error': e.message, 'code': 0}
+                return False, {'error': str(e), 'code': 0}
 
         return False, self._error_wrapper(resp)
 
@@ -504,23 +540,15 @@ class NifApiIntegration(NifApi):
 
 
 class NifApiUser(NifApi):
-    """
-    Service: UserService
-     Port: UserService (Soap12Binding: {http://www.idrett.no/Services/UserService/}UserService)
-         Operations:
-            GetPersonIdByBuypassId(BuypassId: xsd:long) -> ErrorCode: xsd:int, ErrorMessage: xsd:string, PersonId: xsd:int, Success: xsd:boolean
-            GetPersonIdByUsername(Username: xsd:string) -> ErrorCode: xsd:int, ErrorMessage: xsd:string, PersonId: xsd:int, Success: xsd:boolean
-            Hello(Id: xsd:int) -> ErrorCode: xsd:int, ErrorMessage: xsd:string, HelloData: ns2:HelloData, HelloString: xsd:string, Success: xsd:boolean
-            HelloSimple() -> HelloSimpleResult: xsd:string
-    """
+    """"""
 
-    def __init__(self, username, password, test_login=True):
+    def __init__(self, username, password, realm, log_file, test_login=True):
 
-        super().__init__()
+        super().__init__(realm)
         transport = Transport(timeout=1000)
-        self.client = Client(NIF_USER_URL,
+        self.client = Client(self.NIF_USER_URL,
                              wsse=UsernameToken(username, password),
-                             plugins=[LoggingPlugin()],
+                             plugins=[LoggingPlugin(log_file)],
                              transport=transport)
 
         if test_login is True:
@@ -537,17 +565,24 @@ class NifApiUser(NifApi):
             return True, Hello(hello).value
 
         except zeep.exceptions.Fault as e:
-            return False, e.message
+            return False, str(e)
 
-    def get_person_id(self, buypass_id):
+    def get_person_id(self, buypass_id) -> (bool, int):
         """competence type"""
 
         resp = self.client.service.GetPersonIdByBuypassId(BuypassId=buypass_id)
-        return resp
-        if 'Success' in resp and resp['Success'] is True and 'CompetenceType' in resp:
-            competence = Competence(resp)
 
-            return True, competence.value
+        if 'Success' in resp and resp['Success'] is True and 'PersonId' in resp:
+            return True, resp['PersonId']
 
-        else:
-            return False, self._error_wrapper(resp)
+        return False, self._error_wrapper(resp)
+
+    def get_person_id_from_username(self, username) -> (bool, int):
+        """competence type"""
+
+        resp = self.client.service.GetPersonIdByUsername(BuypassId=username)
+
+        if 'Success' in resp and resp['Success'] is True and 'PersonId' in resp:
+            return True, resp['PersonId']
+
+        return False, self._error_wrapper(resp)

@@ -1,10 +1,10 @@
-import typings.helpers as helpers
-from typings.county import County
+from .helpers import unpack
+from .county import County
 
 
 class Counties:
     def __init__(self, counties):
-        self.status, value = helpers.unpack(counties, 'Regions', True)
+        self.status, value = unpack(counties, 'Regions', True)
 
         if self.status is True:
             self.value = value.get('RegionPublic', [])

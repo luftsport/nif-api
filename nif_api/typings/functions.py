@@ -1,11 +1,11 @@
-import typings.helpers as helpers
-from typings.function import Function
+from .helpers import unpack
+from .function import Function
 
 
 class Functions:
     def __init__(self, functions):
 
-        self.status, value = helpers.unpack(functions, 'Functions')
+        self.status, value = unpack(functions, 'Functions')
 
         if self.status is True:
             self.value = value.get('FunctionPublic', [])

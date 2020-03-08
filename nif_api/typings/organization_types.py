@@ -1,11 +1,11 @@
-import typings.helpers as helpers
-from typings.organizationtype import OrganizationType
+from .helpers import unpack
+from .organizationtype import OrganizationType
 
 
 class OrganizationTypes:
     def __init__(self, organization_types):
 
-        self.status, value = helpers.unpack(organization_types, 'OrgTypes')
+        self.status, value = unpack(organization_types, 'OrgTypes')
         if self.status is True:
             self.value = value.get('OrgTypePublic', [])
             self._map()

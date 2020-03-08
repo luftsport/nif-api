@@ -1,7 +1,7 @@
-from typings.contact import Contact
-from typings.gender import Gender
-from typings.clubs import Clubs
-import typings.helpers as helpers
+from .contact import Contact
+from .gender import Gender
+from .clubs import Clubs
+from .helpers import unpack, snake_case, del_by_value, del_keys, rename_key
 from datetime import datetime, date
 
 
@@ -9,7 +9,7 @@ class Person:
     def __init__(self, person):
 
         if 'Success' in person:
-            self.value = helpers.unpack(person, 'PersonPublic')
+            self.value = unpack(person, 'PersonPublic')
 
         else:
             self.value = person
@@ -19,21 +19,21 @@ class Person:
     def _map(self):
         """Should have a list of keys to delete or to fix if None"""
 
-        del_keys = ['extra_addresses', 'id', 'my_profile_settings',
-                    'active_clubs', 'qualifications',
-                    'active_functions', 'function_applications', 'passive_functions']
+        keys = ['extra_addresses', 'id', 'my_profile_settings',
+                'active_clubs', 'qualifications',
+                'active_functions', 'function_applications', 'passive_functions']
 
         # Convert to snake case
-        self.value = helpers.snake_case(self.value)
+        self.value = snake_case(self.value)
 
         # Now delete None values
-        self.value = helpers.del_by_value(self.value, None)
-        self.value = helpers.del_keys(self.value, del_keys)
+        self.value = del_by_value(self.value, None)
+        self.value = del_keys(self.value, keys)
 
         # Rename keys
-        self.value = helpers.rename_key(self.value, {'person_id': 'id',
-                                                     'person_gender': 'gender',
-                                                     'home_address': 'address'})
+        self.value = rename_key(self.value, {'person_id': 'id',
+                                             'person_gender': 'gender',
+                                             'home_address': 'address'})
 
         self.value['address'] = Contact(self.value['address']).value
         self.value['gender'] = Gender(self.value['gender']).value
@@ -61,9 +61,9 @@ class Person:
         self.value['settings'].update({'approve_publishing': self.value.get('approve_publishing', False)})
         self.value['settings'].update({'approve_marketing': self.value.get('approve_marketing', False)})
 
-        self.value = helpers.del_keys(self.value, ['restricted_address', 'is_validated', 'is_person_info_locked',
-                                                   'automatic_data_cleansing_reservation', 'approve_publishing',
-                                                   'approve_marketing'])
+        self.value = del_keys(self.value, ['restricted_address', 'is_validated', 'is_person_info_locked',
+                                           'automatic_data_cleansing_reservation', 'approve_publishing',
+                                           'approve_marketing'])
 
         # self.value = dict((self.mapping.get(k, k), v) for (k, v) in self.value.items())
         # @TODO Address email split on ;

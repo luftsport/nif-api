@@ -1,9 +1,8 @@
-import typings.helpers as helpers
-
+from .helpers import unpack
 
 class OrgLogo:
     def __init__(self, org_logo):
-        self.status, value = helpers.unpack(org_logo, 'OrgLogo', True)
+        self.status, value = unpack(org_logo, 'OrgLogo', True)
 
         if self.status is True:
             self.value = value.get('Data', b'')

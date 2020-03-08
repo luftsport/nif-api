@@ -1,4 +1,9 @@
 .idea
+docs/
+include/
+lib64
+pip-selfcheck.json
+bin/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

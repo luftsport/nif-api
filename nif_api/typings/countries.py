@@ -1,10 +1,10 @@
-import typings.helpers as helpers
-from typings.country import Country
+from .helpers import unpack
+from .country import Country
 
 
 class Countries:
     def __init__(self, countries):
-        self.status, value = helpers.unpack(countries, 'Countries', True)
+        self.status, value = unpack(countries, 'Countries', True)
 
         if self.status is True:
             self.value = value.get('CountryPublic', [])

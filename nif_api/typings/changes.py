@@ -1,11 +1,11 @@
-import typings.helpers as helpers
-from typings.change import Change
+from .helpers import unpack
+from .change import Change
 
 class Changes:
 
     def __init__(self, changes):
 
-        self.status, value = helpers.unpack(changes, 'Synchronization')
+        self.status, value = unpack(changes, 'Synchronization')
 
         if self.status is True and 'Changes' in value and value['Changes'] is not None:
             self.value = value['Changes'].get('ChangeInfo', [])

@@ -1,10 +1,10 @@
-import typings.helpers as helpers
-from typings.person import Person
+from .helpers import unpack
+from .person import Person
 
 class Persons:
     def __init__(self, persons):
 
-        self.status, value = helpers.unpack(persons, 'Persons')
+        self.status, value = unpack(persons, 'Persons')
 
         if self.status is True:
             self.value = value.get('PersonPublic', [])

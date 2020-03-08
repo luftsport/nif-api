@@ -1,4 +1,4 @@
-import typings.helpers as helpers
+from .helpers import snake_case, del_by_value, rename_keys, del_whitelist
 
 
 class Activity:
@@ -8,18 +8,18 @@ class Activity:
         self._map()
 
     def _map(self):
-        rename_keys = [('id', 'activity_id'),
-                       ('code', 'activity_code'),
-                       ('type_sa_id', 'competence_sa_id'),
-                       ]
+        keys = [('id', 'activity_id'),
+                ('code', 'activity_code'),
+                ('type_sa_id', 'competence_sa_id'),
+                ]
 
-        self.value = helpers.snake_case(self.value)
+        self.value = snake_case(self.value)
 
         try:
             self.value['code'] = int(self.value['code'])
         except:
             pass
 
-        self.value = helpers.del_by_value(self.value, None)
-        self.value = helpers.rename_keys(self.value, rename_keys)
-        self.value = helpers.del_whitelist(self.value, ['id', 'code', 'name'])
+        self.value = del_by_value(self.value, None)
+        self.value = rename_keys(self.value, keys)
+        self.value = del_whitelist(self.value, ['id', 'code', 'name'])

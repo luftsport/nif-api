@@ -1,41 +1,43 @@
+# Helpers
+from .helpers import *
 # Change messages
-from typings.change import *
-from typings.changes import *
+from .change import *
+from .changes import *
 
 # Plurals and respective
-from typings.activity import *
-from typings.activities import *
-from typings.competence import *
-from typings.competences import *
-from typings.function import *
-from typings.functions import *
-from typings.functiontype import *
-from typings.functiontypes import *
-from typings.person import *
-from typings.persons import *
-from typings.organization import *
-from typings.organizations import *
-from typings.organizationtype import *
-from typings.organization_types import *
-from typings.country import *
-from typings.countries import *
-from typings.county import *
-from typings.counties import *
-from typings.license_status import *
-from typings.licenses_status import *
-from typings.license_types import *
-from typings.license_type import *
+from .activity import *
+from .activities import *
+from .competence import *
+from .competences import *
+from .function import *
+from .functions import *
+from .functiontype import *
+from .functiontypes import *
+from .person import *
+from .persons import *
+from .organization import *
+from .organizations import *
+from .organizationtype import *
+from .organization_types import *
+from .country import *
+from .countries import *
+from .county import *
+from .counties import *
+from .license_status import *
+from .licenses_status import *
+from .license_types import *
+from .license_type import *
 
 # Singles
-from typings.account import *
-from typings.contact import *
-from typings.functiontype import *
-from typings.gender import *
-from typings.hello import *
-from typings.license import *
-from typings.orgstructure import *
-from typings.qualification import *
-from typings.org_logo import *
-from typings.integration_user import *
+from .account import *
+from .contact import *
+from .functiontype import *
+from .gender import *
+from .hello import *
+from .license import *
+from .orgstructure import *
+from .qualification import *
+from .org_logo import *
+from .integration_user import *
 
 

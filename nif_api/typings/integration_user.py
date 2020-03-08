@@ -1,5 +1,4 @@
-import typings.helpers as helpers
-
+from .helpers import unpack
 
 class IntegrationUser:
     def __init__(self, integration_user):
@@ -11,7 +10,7 @@ class IntegrationUser:
 
         :param integration_user: 
         """
-        self.status, value = helpers.unpack(integration_user, 'Person', True)
+        self.status, value = unpack(integration_user, 'Person', True)
 
         if self.status is True:
             self.value = value.get('Data', b'')

@@ -1,5 +1,4 @@
-import typings.helpers as helpers
-
+from .helpers import snake_case, del_whitelist
 
 class Change:
     def __init__(self, change):
@@ -22,9 +21,9 @@ class Change:
             else:
                 self.value['MergeResultOf'] = []
 
-        self.value = helpers.snake_case(self.value)
+        self.value = snake_case(self.value)
 
         whitelist = ['change_type', 'created', 'entity_type', 'id', 'merge_result_of', 'modified',
                      'name', 'sequence_ordinal', '_ordinal', '_status', '_club_id', '_realm']
 
-        self.value = helpers.del_whitelist(self.value, whitelist)
+        self.value = del_whitelist(self.value, whitelist)

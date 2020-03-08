@@ -1,5 +1,4 @@
-import typings.helpers as helpers
-
+from .helpers import snake_case, del_by_value
 
 class County:
     def __init__(self, county):
@@ -11,6 +10,6 @@ class County:
         self._map()
 
     def _map(self):
-        self.value = helpers.snake_case(self.value)
-        self.value = helpers.del_by_value(self.value, None)
-        self.value = helpers.del_by_value(self.value, '')
+        self.value = snake_case(self.value)
+        self.value = del_by_value(self.value, None)
+        self.value = del_by_value(self.value, '')

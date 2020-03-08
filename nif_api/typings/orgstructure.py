@@ -1,5 +1,4 @@
-import typings.helpers as helpers
-
+from .helpers import snake_case
 
 class OrgStructure:
     def __init__(self, organization, direction):
@@ -22,7 +21,7 @@ class OrgStructure:
 
         new_value = []
         for row in self.value:
-            row = helpers.snake_case(row)
+            row = snake_case(row)
 
             # if row['org_id_{}'.format(self.direction)] not in self.disallow_ids and row[
             #        'org_type_id_{}'.format(self.direction)] not in self.disallow_types:

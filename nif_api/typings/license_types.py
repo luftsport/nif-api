@@ -1,10 +1,10 @@
-import typings.helpers as helpers
-from typings.license_type import LicenseType
+from .helpers import unpack
+from .license_type import LicenseType
 
 
 class LicenseTypes:
     def __init__(self, license_types):
-        self.status, value = helpers.unpack(license_types, 'LicenseTypes', True)
+        self.status, value = unpack(license_types, 'LicenseTypes', True)
 
         if self.status is True:
             self.value = value.get('LicenseTypePublic', [])

@@ -1,5 +1,4 @@
-import typings.helpers as helpers
-
+from .helpers import snake_case, del_by_value
 
 class OrganizationType:
     def __init__(self, organization_type):
@@ -8,5 +7,5 @@ class OrganizationType:
         self._map()
 
     def _map(self):
-        self.value = helpers.snake_case(self.value)
-        self.value = helpers.del_by_value(self.value, None)
+        self.value = snake_case(self.value)
+        self.value = del_by_value(self.value, None)
