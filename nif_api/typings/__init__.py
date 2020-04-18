@@ -39,5 +39,6 @@ from .orgstructure import *
 from .qualification import *
 from .org_logo import *
 from .integration_user import *
+from .payment import *
 
 

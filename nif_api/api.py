@@ -73,7 +73,7 @@ class NifApi:
         elif realm == 'DEV':
             nif_base_url = 'https://nswebdev.nif.no/v4ws'
 
-        self.LOCAL_TIMEZONE = local_timezone  # "Europe/Oslo"  UTC
+        self.LOCAL_TIMEZONE = local_timezone  # "Europe/Oslo" or UTC
 
         # NIF common url's
         self.NIF_SYNC_URL = '{}/SynchronizationService.svc?wsdl'.format(nif_base_url)
@@ -82,6 +82,7 @@ class NifApi:
         self.NIF_COURSE2_URL = '{}/Course2Service.svc?wsdl'.format(nif_base_url)
         self.NIF_PERSON_URL = '{}/PersonService.svc?wsdl'.format(nif_base_url)
         self.NIF_USER_URL = '{}/UserService.svc?wsdl'.format(nif_base_url)
+        self.NIF_PAYMENT_URL = '{}/PaymentService.svc?wsdl'.format(nif_base_url)
 
         self.tz_local = tz.gettz("Europe/Oslo")
         self.tz_utc = tz.gettz('UTC')
@@ -206,8 +207,8 @@ class NifApiSynchronization(NifApi):
 
         if 'Success' in resp and resp['Success'] is True:
             return True, IntegrationUser(resp).value
-        else:
-            return False, self._error_wrapper(resp)
+
+        return False, self._error_wrapper(resp)
 
 
 class NifApiCompetence(NifApi):
@@ -581,6 +582,59 @@ class NifApiUser(NifApi):
         """competence type"""
 
         resp = self.client.service.GetPersonIdByUsername(BuypassId=username)
+
+        if 'Success' in resp and resp['Success'] is True and 'PersonId' in resp:
+            return True, resp['PersonId']
+
+        return False, self._error_wrapper(resp)
+
+
+class NifApiPayments(NifApi):
+    """Uses club user"""
+
+    def __init__(self, username, password, realm, log_file, test_login=True):
+
+        super().__init__(realm)
+        transport = Transport(timeout=1000)
+        self.client = Client(self.NIF_PAYMENT_URL,
+                             wsse=UsernameToken(username, password),
+                             plugins=[LoggingPlugin(log_file)],
+                             transport=transport)
+
+        if test_login is True:
+            state, result = self._test()
+
+            if state is not True:
+                raise NIFApiAuthenticationError('Could not authenticate via test')
+
+    def _test(self):
+
+        try:
+            hello = self.client.service.Hello()
+
+            return True, Hello(hello).value
+
+        except zeep.exceptions.Fault as e:
+            return False, str(e)
+
+    def get_payment(self, payment_id):
+        """payment GetPaymentDetailsById og GetPaymentDetailsByIds"""
+
+        resp = self.client.service.GetPaymentDetailsById(payment_id)
+
+        return resp
+
+        if 'Success' in resp and resp['Success'] is True and 'PersonId' in resp:
+            return True, resp['PersonId']
+
+        return False, self._error_wrapper(resp)
+
+    def get_payments(self, payment_ids):
+        """payment GetPaymentDetailsById og GetPaymentDetailsByIds"""
+
+        resp = self.client.service.GetPaymentDetailsByIds(payment_ids)
+
+        return resp
 
         if 'Success' in resp and resp['Success'] is True and 'PersonId' in resp:
             return True, resp['PersonId']
