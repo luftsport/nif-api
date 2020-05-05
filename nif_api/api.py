@@ -13,6 +13,7 @@ from .typings import (Changes,
                       Competence,
                       Competences,
                       License,
+                      Payment,
                       Hello,
                       FunctionTypes,
                       Countries,
@@ -622,21 +623,21 @@ class NifApiPayments(NifApi):
 
         resp = self.client.service.GetPaymentDetailsById(payment_id)
 
-        return resp
-
-        if 'Success' in resp and resp['Success'] is True and 'PersonId' in resp:
-            return True, resp['PersonId']
+        if 'Success' in resp and resp['Success'] is True and 'PaymentDetails' in resp:
+            return True, Payment(resp).value
 
         return False, self._error_wrapper(resp)
 
     def get_payments(self, payment_ids):
         """payment GetPaymentDetailsById og GetPaymentDetailsByIds"""
 
+        raise NotImplementedError
+
         resp = self.client.service.GetPaymentDetailsByIds(payment_ids)
 
         return resp
 
-        if 'Success' in resp and resp['Success'] is True and 'PersonId' in resp:
-            return True, resp['PersonId']
+        if 'Success' in resp and resp['Success'] is True and 'PaymentDetails' in resp:
+            return True, resp['PaymentDetails']
 
         return False, self._error_wrapper(resp)
