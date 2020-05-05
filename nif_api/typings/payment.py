@@ -18,6 +18,7 @@ class Payment:
                      'last_name',
                      'bank_account',
                      'bank_account_id',
+                     'fa_date_time',
                      # 'kid', keep!
                      'status',
                      'receiver']
