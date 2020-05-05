@@ -18,15 +18,18 @@ class Payment:
                      'last_name',
                      'bank_account',
                      'bank_account_id',
-                     'kid',
-                     'status']
+                     # 'kid', keep!
+                     'status',
+                     'receiver']
 
+        # renamed, original
         keys = [('id', 'payment_id'),
                 ('method_id', 'payment_method_id'),
                 ('receiver', 'payment_receiver'),
                 ('receiver_org_id', 'payment_receiver_org_id'),
                 ('person_id', 'relation_id_customer'),
-                ('person_type', 'relation_type_id_customer')
+                ('person_type', 'relation_type_id_customer'),
+                ('org_id', 'product_type')  # Hackish for 376 in NIF
                 ]
 
         self.value = snake_case(self.value)
