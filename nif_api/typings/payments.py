@@ -8,7 +8,6 @@ class Payments:
 
         if self.status is True:
             self.value = value.get('PaymentDetails', [])
-            print(self.status, self.value)
             self._map()
         else:
             self.value = []
@@ -19,4 +18,4 @@ class Payments:
         for item in self.value:
             new_value.append(Payment(item).value)
 
-        self.value = new_value
+        self.value = list(new_value)
