@@ -14,6 +14,7 @@ from .typings import (Changes,
                       Competences,
                       License,
                       Payment,
+                      Payments,
                       Hello,
                       FunctionTypes,
                       Countries,
@@ -602,6 +603,8 @@ class NifApiPayments(NifApi):
                              plugins=[LoggingPlugin(log_file)],
                              transport=transport)
 
+        self.ns5 = self.client.type_factory('ns5')
+
         if test_login is True:
             state, result = self._test()
 
@@ -618,26 +621,17 @@ class NifApiPayments(NifApi):
         except zeep.exceptions.Fault as e:
             return False, str(e)
 
-    def get_payment(self, payment_id):
-        """payment GetPaymentDetailsById og GetPaymentDetailsByIds"""
 
-        resp = self.client.service.GetPaymentDetailsById(payment_id)
+    def get_payment(self, payment_id) -> (bool, list):
 
-        if 'Success' in resp and resp['Success'] is True and 'PaymentDetails' in resp:
-            return True, Payment(resp).value
-
-        return False, self._error_wrapper(resp)
-
-    def get_payments(self, payment_ids):
-        """payment GetPaymentDetailsById og GetPaymentDetailsByIds"""
-
-        raise NotImplementedError
+        payment_ids = self.ns5.ArrayOfint([payment_id])
 
         resp = self.client.service.GetPaymentDetailsByIds(payment_ids)
 
-        return resp
-
         if 'Success' in resp and resp['Success'] is True and 'PaymentDetails' in resp:
-            return True, resp['PaymentDetails']
 
-        return False, self._error_wrapper(resp)
+            invoice = Payments(resp)
+            return True, invoice.value
+        else:
+            return False, self._error_wrapper(resp)
+

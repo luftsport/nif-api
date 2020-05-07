@@ -15,6 +15,8 @@ from .functiontype import *
 from .functiontypes import *
 from .person import *
 from .persons import *
+from .payment import *
+from .payments import *
 from .organization import *
 from .organizations import *
 from .organizationtype import *
@@ -39,6 +41,7 @@ from .orgstructure import *
 from .qualification import *
 from .org_logo import *
 from .integration_user import *
-from .payment import *
+
+
 
 
