@@ -4,8 +4,10 @@ import decimal
 
 class Payment:
     def __init__(self, payment):
-        self.status, self.value = unpack(payment, 'PaymentDetails')
+        if not isinstance(payment, dict):
+            raise TypeError('Not a dict')
 
+        self.value = payment
         self._map()
 
     def _map(self):
