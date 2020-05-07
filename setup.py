@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="nif-api",
-    version="0.1.8",
+    version="0.2.0",
     author="Einar Huseby",
     author_email="einar.huseby@gmail.com",
     description="A pythonic interface to NIF webservices using Zeep",
