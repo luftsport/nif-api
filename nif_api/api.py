@@ -630,8 +630,8 @@ class NifApiPayments(NifApi):
 
         if 'Success' in resp and resp['Success'] is True and 'PaymentDetails' in resp:
 
-            invoice = Payments(resp)
-            return True, invoice.value
+            invoice_lines = Payments(resp)
+            return True, invoice_lines.value
         else:
             return False, self._error_wrapper(resp)
 
