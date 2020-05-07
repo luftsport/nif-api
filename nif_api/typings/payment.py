@@ -26,7 +26,7 @@ class Payment:
                      'receiver']
 
         # renamed, original
-        keys = [('id', 'payment_id'),
+        keys = [('id', 'transaction_id'),
                 ('method_id', 'payment_method_id'),
                 ('receiver', 'payment_receiver'),
                 ('receiver_org_id', 'payment_receiver_org_id'),
