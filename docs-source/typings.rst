@@ -5,7 +5,7 @@ Submodules
 ----------
 
 nif_api.typings.account module
-----------------------
+------------------------------
 
 .. automodule:: nif_api.typings.account
     :members:
@@ -13,7 +13,7 @@ nif_api.typings.account module
     :show-inheritance:
 
 nif_api.typings.activities module
--------------------------
+---------------------------------
 
 .. automodule:: nif_api.typings.activities
     :members:
@@ -21,7 +21,7 @@ nif_api.typings.activities module
     :show-inheritance:
 
 nif_api.typings.activity module
------------------------
+-------------------------------
 
 .. automodule:: nif_api.typings.activity
     :members:
@@ -29,7 +29,7 @@ nif_api.typings.activity module
     :show-inheritance:
 
 nif_api.typings.change module
----------------------
+-----------------------------
 
 .. automodule:: nif_api.typings.change
     :members:
@@ -37,7 +37,7 @@ nif_api.typings.change module
     :show-inheritance:
 
 nif_api.typings.changes module
-----------------------
+------------------------------
 
 .. automodule:: nif_api.typings.changes
     :members:
@@ -45,7 +45,7 @@ nif_api.typings.changes module
     :show-inheritance:
 
 nif_api.typings.clubs module
---------------------
+----------------------------
 
 .. automodule:: nif_api.typings.clubs
     :members:
@@ -53,7 +53,7 @@ nif_api.typings.clubs module
     :show-inheritance:
 
 nif_api.typings.competence module
--------------------------
+---------------------------------
 
 .. automodule:: nif_api.typings.competence
     :members:
@@ -61,7 +61,7 @@ nif_api.typings.competence module
     :show-inheritance:
 
 nif_api.typings.competences module
---------------------------
+----------------------------------
 
 .. automodule:: nif_api.typings.competences
     :members:
@@ -69,7 +69,7 @@ nif_api.typings.competences module
     :show-inheritance:
 
 nif_api.typings.contact module
-----------------------
+------------------------------
 
 .. automodule:: nif_api.typings.contact
     :members:
@@ -77,7 +77,7 @@ nif_api.typings.contact module
     :show-inheritance:
 
 nif_api.typings.function module
------------------------
+-------------------------------
 
 .. automodule:: nif_api.typings.function
     :members:
@@ -85,7 +85,7 @@ nif_api.typings.function module
     :show-inheritance:
 
 nif_api.typings.functions module
-------------------------
+--------------------------------
 
 .. automodule:: nif_api.typings.functions
     :members:
@@ -93,7 +93,7 @@ nif_api.typings.functions module
     :show-inheritance:
 
 nif_api.typings.functiontype module
----------------------------
+-----------------------------------
 
 .. automodule:: nif_api.typings.functiontype
     :members:
@@ -101,7 +101,7 @@ nif_api.typings.functiontype module
     :show-inheritance:
 
 nif_api.typings.gender module
----------------------
+-----------------------------
 
 .. automodule:: nif_api.typings.gender
     :members:
@@ -109,7 +109,7 @@ nif_api.typings.gender module
     :show-inheritance:
 
 nif_api.typings.hello module
---------------------
+----------------------------
 
 .. automodule:: nif_api.typings.hello
     :members:
@@ -117,7 +117,7 @@ nif_api.typings.hello module
     :show-inheritance:
 
 nif_api.typings.helpers module
-----------------------
+------------------------------
 
 .. automodule:: nif_api.typings.helpers
     :members:
@@ -125,7 +125,7 @@ nif_api.typings.helpers module
     :show-inheritance:
 
 nif_api.typings.license module
-----------------------
+------------------------------
 
 .. automodule:: nif_api.typings.license
     :members:
@@ -133,7 +133,7 @@ nif_api.typings.license module
     :show-inheritance:
 
 nif_api.typings.organization module
----------------------------
+-----------------------------------
 
 .. automodule:: nif_api.typings.organization
     :members:
@@ -141,7 +141,7 @@ nif_api.typings.organization module
     :show-inheritance:
 
 nif_api.typings.organizations module
-----------------------------
+------------------------------------
 
 .. automodule:: nif_api.typings.organizations
     :members:
@@ -149,7 +149,7 @@ nif_api.typings.organizations module
     :show-inheritance:
 
 nif_api.typings.organizationtype module
--------------------------------
+---------------------------------------
 
 .. automodule:: nif_api.typings.organizationtype
     :members:
@@ -157,7 +157,7 @@ nif_api.typings.organizationtype module
     :show-inheritance:
 
 nif_api.typings.orgstructure module
----------------------------
+-----------------------------------
 
 .. automodule:: nif_api.typings.orgstructure
     :members:
@@ -165,7 +165,7 @@ nif_api.typings.orgstructure module
     :show-inheritance:
 
 nif_api.typings.person module
----------------------
+-----------------------------
 
 .. automodule:: nif_api.typings.person
     :members:
@@ -173,15 +173,31 @@ nif_api.typings.person module
     :show-inheritance:
 
 nif_api.typings.persons module
-----------------------
+------------------------------
 
 .. automodule:: nif_api.typings.persons
     :members:
     :undoc-members:
     :show-inheritance:
 
+nif_api.typings.payment module
+------------------------------
+
+.. automodule:: nif_api.typings.payment
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+nif_api.typings.payments module
+-------------------------------
+
+.. automodule:: nif_api.typings.payments
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 nif_api.typings.qualification module
-----------------------------
+------------------------------------
 
 .. automodule:: nif_api.typings.qualification
     :members:
