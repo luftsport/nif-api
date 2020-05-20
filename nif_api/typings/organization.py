@@ -32,6 +32,7 @@ class Organization:
                           'local_council_id', 'local_council_name', 'modified', 'nif_organization_number', 'name',
                           'org_id', 'organization_type_id', 'parent_organization_id',
                           'register_authority_organization_number', 'short_name', 'activities', 'main_activity',
+                          'cancellation_date', 'cancellation_type_id',
                           '_down', '_up']
         self._map()
 
@@ -41,7 +42,9 @@ class Organization:
             ('id', 'org_id'),
             ('type_id', 'organization_type_id'),
             ('parent_id', 'parent_organization_id'),
-            ('authority_id', 'register_authority_organization_number')
+            ('authority_id', 'register_authority_organization_number'),
+            ('end_date', 'cancellation_date'),
+            ('end_type_id', 'cancellation_type_id'),
         ]
 
         self.value = snake_case(self.value)
