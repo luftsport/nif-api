@@ -9,6 +9,7 @@ from .activity import *
 from .activities import *
 from .competence import *
 from .competences import *
+from .competence_type import *
 from .function import *
 from .functions import *
 from .functiontype import *
