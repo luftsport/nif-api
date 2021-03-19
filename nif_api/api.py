@@ -12,6 +12,7 @@ from .typings import (Changes,
                       Functions,
                       Competence,
                       Competences,
+                      CompetenceType,
                       License,
                       Payment,
                       Payments,
@@ -261,15 +262,15 @@ class NifApiCompetence(NifApi):
         else:
             return False, self._error_wrapper(resp)
 
-    def get_competece_type(self, type_id):
+    def get_competence_type(self, type_id):
         """competence type"""
 
         resp = self.client.service.CompetenceTypeGet(CompetenceTypeId=type_id)
 
         if 'Success' in resp and resp['Success'] is True and 'CompetenceType' in resp:
-            competence = Competence(resp)
+            competence_type = CompetenceType(resp)
 
-            return True, competence.value
+            return True, competence_type.value
 
         else:
             return False, self._error_wrapper(resp)
@@ -621,7 +622,6 @@ class NifApiPayments(NifApi):
         except zeep.exceptions.Fault as e:
             return False, str(e)
 
-
     def get_payment(self, payment_id) -> (bool, list):
 
         payment_ids = self.ns5.ArrayOfint([payment_id])
@@ -634,4 +634,3 @@ class NifApiPayments(NifApi):
             return True, invoice_lines.value
         else:
             return False, self._error_wrapper(resp)
-
