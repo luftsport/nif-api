@@ -14,7 +14,6 @@ from .typings import (Changes,
                       Competences,
                       CompetenceType,
                       License,
-                      Payment,
                       Payments,
                       Hello,
                       FunctionTypes,
@@ -26,13 +25,6 @@ from .typings import (Changes,
                       Activities,
                       OrganizationTypes,
                       IntegrationUser)
-
-"""
-@TODO Remove this
-from os import getcwd
-DEFAULT_REALM = 'PROD'
-DEFAULT_LOG_FILE = '{}/nif_api.log'.format(getcwd())
-"""
 
 
 class NIFApiError(Exception):
@@ -379,7 +371,7 @@ class NifApiIntegration(NifApi):
             return False, str(e)
 
     def get_competence(self, competence_id) -> (bool, dict):
-        raise Exception('Use NifApiCompetence!')
+        raise Exception('Use class NifApiCompetence!')
 
         resp = self.client.service.CompetenceGet(CompetenceId=competence_id)
 
@@ -387,6 +379,19 @@ class NifApiIntegration(NifApi):
             competence = Competence(resp)
 
             return True, competence.value
+
+        else:
+            return False, self._error_wrapper(resp)
+
+    def get_competence_type(self, type_id) -> (bool, dict):
+        raise Exception('Use class NifApiCompetence!')
+
+        resp = self.client.service.CompetenceTypeGet(CompetenceTypeId=type_id)
+
+        if 'Success' in resp and resp['Success'] is True and 'CompetenceType' in resp:
+            competence_type = CompetenceType(resp)
+
+            return True, competence_type.value
 
         else:
             return False, self._error_wrapper(resp)
