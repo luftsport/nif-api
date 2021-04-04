@@ -11,7 +11,7 @@ class CompetenceType:
             self.value = value
             self._map()
 
-    def remove_tags(self, text):
+    def _remove_tags(self, text):
 
         try:
             text = text.strip()
@@ -43,6 +43,7 @@ class CompetenceType:
         self.value = del_by_value(self.value, None)
         self.value = rename_keys(self.value, keys)
 
-        self.value['description'] = self.remove_tags(self.value.get('description', ''))
-        self.value['prequisites_text'] = self.remove_tags(self.value.get('prequisites_text', ''))
-        self.value['title'] = self.remove_tags(self.value.get('title', ''))
+        self.value['description'] = self._remove_tags(self.value.get('description', ''))
+        self.value['prequisites_text'] = self._remove_tags(self.value.get('prequisites_text', ''))
+        self.value['title'] = self._remove_tags(self.value.get('title', ''))
+        self.value['colorcode'] = self._remove_tags(self.value.get('colorcode', ''))
