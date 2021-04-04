@@ -14,7 +14,6 @@ from .typings import (Changes,
                       Competences,
                       CompetenceType,
                       License,
-                      Payment,
                       Payments,
                       Hello,
                       FunctionTypes,
@@ -26,13 +25,6 @@ from .typings import (Changes,
                       Activities,
                       OrganizationTypes,
                       IntegrationUser)
-
-"""
-@TODO Remove this
-from os import getcwd
-DEFAULT_REALM = 'PROD'
-DEFAULT_LOG_FILE = '{}/nif_api.log'.format(getcwd())
-"""
 
 
 class NIFApiError(Exception):
