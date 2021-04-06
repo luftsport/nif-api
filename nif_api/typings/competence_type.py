@@ -1,4 +1,4 @@
-from .helpers import snake_case, del_by_value, rename_keys, unpack
+from .helpers import snake_case, del_by_value, rename_keys, unpack, del_whitelist
 from xml.etree import ElementTree
 import html
 
@@ -44,6 +44,37 @@ class CompetenceType:
 
         self.value = del_by_value(self.value, None)
         self.value = rename_keys(self.value, keys)
+
+        whitelist = ['attributes',
+                     'categories',
+                     'checked_by',
+                     'children',
+                     'code',
+                     'colorcode',
+                     'id',
+                     'meta_type',
+                     'type_id',
+                     'type_sa_id',
+                     'description',
+                     'duration',
+                     'durations',
+                     'files',
+                     'instructors',
+                     'languages_available',
+                     'locale',
+                     'max_age',
+                     'min_age',
+                     'modified',
+                     'organisations',
+                     'pre_requisites',
+                     'prequisites_text',
+                     'short_description',
+                     'sports',
+                     'title',
+                     'valid_for',
+                     'weight']
+
+        self.value = del_whitelist(self.value, whitelist)
 
         self.value['description'] = self._remove_tags(self.value.get('description', ''))
         self.value['prequisites_text'] = self._remove_tags(self.value.get('prequisites_text', ''))
