@@ -2,6 +2,7 @@ from .helpers import snake_case, del_by_value, rename_keys, unpack
 from xml.etree import ElementTree
 import html
 
+
 class CompetenceType:
     def __init__(self, competence_type):
 
@@ -36,6 +37,7 @@ class CompetenceType:
                 ('meta_type', 'competence_meta_type'),
                 ('sa_id', 'competence_sa_id'),
                 ('type_sa_id', 'competence_type_sa_id'),
+                ('attributes', 'custom_attributes')
                 ]
 
         self.value = snake_case(self.value)
@@ -47,3 +49,9 @@ class CompetenceType:
         self.value['prequisites_text'] = self._remove_tags(self.value.get('prequisites_text', ''))
         self.value['title'] = self._remove_tags(self.value.get('title', ''))
         self.value['colorcode'] = self._remove_tags(self.value.get('colorcode', ''))
+
+        # Remove xml type
+        self.value['children'] = self.value.get('children', {}).get('competence_type', [])
+        self.value['sports'] = self.value.get('sports', {}).get('sport_simple', [])
+        self.value['organisations'] = self.value.get('organisations', {}).get('organisation', [])
+        self.value['languages_available'] = self.value.get('languages_available', {}).get('string', [])
