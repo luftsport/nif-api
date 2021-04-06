@@ -75,7 +75,7 @@ class CompetenceType:
                      'weight']
 
         self.value = del_whitelist(self.value, whitelist)
-
+        CompetenceType
         self.value['description'] = self._remove_tags(self.value.get('description', ''))
         self.value['prequisites_text'] = self._remove_tags(self.value.get('prequisites_text', ''))
         self.value['title'] = self._remove_tags(self.value.get('title', ''))
@@ -83,6 +83,7 @@ class CompetenceType:
 
         # Remove xml type
         self.value['children'] = self.value.get('children', {}).get('competence_type', [])
+        self.value['pre_requisites'] = self.value.get('pre_requisites', {}).get('competence_type', [])
         self.value['sports'] = self.value.get('sports', {}).get('sport_simple', [])
         self.value['organisations'] = self.value.get('organisations', {}).get('organisation', [])
         self.value['languages_available'] = self.value.get('languages_available', {}).get('string', [])
