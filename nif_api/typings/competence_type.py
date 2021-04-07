@@ -87,3 +87,4 @@ class CompetenceType:
         self.value['sports'] = self.value.get('sports', {}).get('sport_simple', [])
         self.value['organisations'] = self.value.get('organisations', {}).get('organisation', [])
         self.value['languages_available'] = self.value.get('languages_available', {}).get('string', [])
+        self.value['durations'] = self.value.get('durations', {}).get('duration', [])
