@@ -1,89 +1,174 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>nif-api &mdash; NIF Api 0.1.3 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
+      <title>nif-api</title>
+    
+          <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="_static/theme.css " type="text/css" />
+      
+      <!-- sphinx script_files -->
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-    <script src="_static/js/theme.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="nif_api package" href="nif_api.html" /> 
-</head>
 
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> NIF Api
-          </a>
-              <div class="version">
-                0.1
-              </div>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">NIF Api</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="nif_api.html">nif_api package</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Module index</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">nif-api</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="nif_api.html">nif_api package</a></li>
-</ul>
-</li>
-</ul>
+      
+      <!-- bundled in js (rollup iife) -->
+      <!-- <script src="_static/theme-vendors.js"></script> -->
+      <script src="_static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="genindex.html" />
+  <link rel="search" title="Search" href="search.html" />
+  <link rel="prev" title="nif_api package" href="nif_api.html" /> 
+  </head>
 
-        </div>
+  <body>
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="index.html" class="home-link">
+    
+      <span class="site-name">NIF Api</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="index.html#welcome-to-nif-api-s-documentation"
+         class="nav-link ">
+         NIF Api
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="#nif-api"
+         class="nav-link ">
+         nif-api
+      </a>
+    </div>
+  
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
       </div>
-    </nav>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">NIF Api</a>
-      </nav>
+  
+    <div class="nav-item">
+      <a href="index.html#welcome-to-nif-api-s-documentation"
+         class="nav-link ">
+         NIF Api
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="#nif-api"
+         class="nav-link ">
+         nif-api
+      </a>
+    </div>
+  
 
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
-      <li class="breadcrumb-item active">nif-api</li>
-      <li class="wy-breadcrumbs-aside">
-      </li>
-  </ul>
-  <hr/>
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="index.html#welcome-to-nif-api-s-documentation">NIF Api</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="nif_api.html" class="reference internal ">nif_api package</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="#nif-api">nif-api</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="nif_api.html" class="reference internal ">nif_api package</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+        </sidebar>
 
-           <div itemprop="articleBody">
-             
+      <page>
+
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+    <li>nif-api</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="nif_api.html"
+       title="previous chapter">← nif_api package</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main" v-pre>
+            
   <section id="nif-api">
-<h1>nif-api<a class="headerlink" href="#nif-api" title="Permalink to this headline"></a></h1>
+<h1>nif-api<a class="headerlink" href="#nif-api" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="nif_api.html">nif_api package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="nif_api.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nif_api.html#nif-api-api-module">nif_api.api module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nif_api.html#module-nif_api.api">nif_api.api module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nif_api.html#module-nif_api.logger">nif_api.logger module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nif_api.html#module-contents">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nif_api.html#module-nif_api">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -91,43 +176,27 @@
 </section>
 
 
-           </div>
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="nif_api.html"
+       title="previous chapter">← nif_api package</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright Norges Luftsportforbund.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
+</div>
+            </div>
           </div>
     <a href="https://github.com/luftsport/nif-api">
         <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
     </a>
 
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="nif_api.html" class="btn btn-neutral float-left" title="nif_api package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright Norges Luftsportforbund.</p>
-  </div>
-
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-  
- 
-<div>
-    Code is available on <a href="https://github.com/luftsport/nif-api">https://github.com/luftsport/nif-api</a>
-</div>
-<!-- your html code here -->
-
-
-</footer>
-        </div>
-      </div>
-    </section>
-  </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
-
-</body>
+      </page>
+    </div></div>
+    
+    
+  </body>
 </html>

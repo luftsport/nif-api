@@ -1,197 +1,446 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>nif_api.typings package &mdash; NIF Api 0.1.3 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
+      <title>nif_api.typings package</title>
+    
+          <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="_static/theme.css " type="text/css" />
+      
+      <!-- sphinx script_files -->
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-    <script src="_static/js/theme.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
-</head>
 
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> NIF Api
-          </a>
-              <div class="version">
-                0.1
-              </div>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">NIF Api</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="nif_api.html">nif_api package</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Module index</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">nif-api</a></li>
-</ul>
+      
+      <!-- bundled in js (rollup iife) -->
+      <!-- <script src="_static/theme-vendors.js"></script> -->
+      <script src="_static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="genindex.html" />
+  <link rel="search" title="Search" href="search.html" /> 
+  </head>
 
-        </div>
+  <body>
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="index.html" class="home-link">
+    
+      <span class="site-name">NIF Api</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="index.html#welcome-to-nif-api-s-documentation"
+         class="nav-link ">
+         NIF Api
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="modules.html#nif-api"
+         class="nav-link ">
+         nif-api
+      </a>
+    </div>
+  
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
       </div>
-    </nav>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">NIF Api</a>
-      </nav>
+  
+    <div class="nav-item">
+      <a href="index.html#welcome-to-nif-api-s-documentation"
+         class="nav-link ">
+         NIF Api
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="modules.html#nif-api"
+         class="nav-link ">
+         nif-api
+      </a>
+    </div>
+  
 
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
-      <li class="breadcrumb-item active">nif_api.typings package</li>
-      <li class="wy-breadcrumbs-aside">
-      </li>
-  </ul>
-  <hr/>
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="index.html#welcome-to-nif-api-s-documentation">NIF Api</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="nif_api.html" class="reference internal ">nif_api package</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="modules.html#nif-api">nif-api</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="nif_api.html" class="reference internal ">nif_api package</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+        </sidebar>
 
-           <div itemprop="articleBody">
-             
+      <page>
+
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+    <li>nif_api.typings package</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main" v-pre>
+            
   <section id="nif-api-typings-package">
-<h1>nif_api.typings package<a class="headerlink" href="#nif-api-typings-package" title="Permalink to this headline"></a></h1>
+<h1>nif_api.typings package<a class="headerlink" href="#nif-api-typings-package" title="Permalink to this headline">¶</a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </section>
-<section id="nif-api-typings-account-module">
-<h2>nif_api.typings.account module<a class="headerlink" href="#nif-api-typings-account-module" title="Permalink to this headline"></a></h2>
+<section id="module-nif_api.typings.account">
+<span id="nif-api-typings-account-module"></span><h2>nif_api.typings.account module<a class="headerlink" href="#module-nif_api.typings.account" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nif_api.typings.account.Account">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nif_api.typings.account.</span></span><span class="sig-name descname"><span class="pre">Account</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">account</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/account.html#Account"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.account.Account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
 </section>
-<section id="nif-api-typings-activities-module">
-<h2>nif_api.typings.activities module<a class="headerlink" href="#nif-api-typings-activities-module" title="Permalink to this headline"></a></h2>
+<section id="module-nif_api.typings.activities">
+<span id="nif-api-typings-activities-module"></span><h2>nif_api.typings.activities module<a class="headerlink" href="#module-nif_api.typings.activities" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nif_api.typings.activities.Activities">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nif_api.typings.activities.</span></span><span class="sig-name descname"><span class="pre">Activities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">activities</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/activities.html#Activities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.activities.Activities" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
 </section>
-<section id="nif-api-typings-activity-module">
-<h2>nif_api.typings.activity module<a class="headerlink" href="#nif-api-typings-activity-module" title="Permalink to this headline"></a></h2>
+<section id="module-nif_api.typings.activity">
+<span id="nif-api-typings-activity-module"></span><h2>nif_api.typings.activity module<a class="headerlink" href="#module-nif_api.typings.activity" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nif_api.typings.activity.Activity">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nif_api.typings.activity.</span></span><span class="sig-name descname"><span class="pre">Activity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">activity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/activity.html#Activity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.activity.Activity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
 </section>
-<section id="nif-api-typings-change-module">
-<h2>nif_api.typings.change module<a class="headerlink" href="#nif-api-typings-change-module" title="Permalink to this headline"></a></h2>
+<section id="module-nif_api.typings.change">
+<span id="nif-api-typings-change-module"></span><h2>nif_api.typings.change module<a class="headerlink" href="#module-nif_api.typings.change" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nif_api.typings.change.Change">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nif_api.typings.change.</span></span><span class="sig-name descname"><span class="pre">Change</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">change</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/change.html#Change"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.change.Change" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
 </section>
-<section id="nif-api-typings-changes-module">
-<h2>nif_api.typings.changes module<a class="headerlink" href="#nif-api-typings-changes-module" title="Permalink to this headline"></a></h2>
+<section id="module-nif_api.typings.changes">
+<span id="nif-api-typings-changes-module"></span><h2>nif_api.typings.changes module<a class="headerlink" href="#module-nif_api.typings.changes" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nif_api.typings.changes.Changes">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nif_api.typings.changes.</span></span><span class="sig-name descname"><span class="pre">Changes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">changes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/changes.html#Changes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.changes.Changes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
 </section>
-<section id="nif-api-typings-clubs-module">
-<h2>nif_api.typings.clubs module<a class="headerlink" href="#nif-api-typings-clubs-module" title="Permalink to this headline"></a></h2>
+<section id="module-nif_api.typings.clubs">
+<span id="nif-api-typings-clubs-module"></span><h2>nif_api.typings.clubs module<a class="headerlink" href="#module-nif_api.typings.clubs" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nif_api.typings.clubs.Clubs">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nif_api.typings.clubs.</span></span><span class="sig-name descname"><span class="pre">Clubs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clubs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/clubs.html#Clubs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.clubs.Clubs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
 </section>
-<section id="nif-api-typings-competence-module">
-<h2>nif_api.typings.competence module<a class="headerlink" href="#nif-api-typings-competence-module" title="Permalink to this headline"></a></h2>
+<section id="module-nif_api.typings.competence">
+<span id="nif-api-typings-competence-module"></span><h2>nif_api.typings.competence module<a class="headerlink" href="#module-nif_api.typings.competence" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nif_api.typings.competence.Competence">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nif_api.typings.competence.</span></span><span class="sig-name descname"><span class="pre">Competence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">competence</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/competence.html#Competence"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.competence.Competence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
 </section>
-<section id="nif-api-typings-competences-module">
-<h2>nif_api.typings.competences module<a class="headerlink" href="#nif-api-typings-competences-module" title="Permalink to this headline"></a></h2>
+<section id="module-nif_api.typings.competences">
+<span id="nif-api-typings-competences-module"></span><h2>nif_api.typings.competences module<a class="headerlink" href="#module-nif_api.typings.competences" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nif_api.typings.competences.Competences">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nif_api.typings.competences.</span></span><span class="sig-name descname"><span class="pre">Competences</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">competences</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/competences.html#Competences"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.competences.Competences" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
 </section>
-<section id="nif-api-typings-contact-module">
-<h2>nif_api.typings.contact module<a class="headerlink" href="#nif-api-typings-contact-module" title="Permalink to this headline"></a></h2>
+<section id="module-nif_api.typings.contact">
+<span id="nif-api-typings-contact-module"></span><h2>nif_api.typings.contact module<a class="headerlink" href="#module-nif_api.typings.contact" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nif_api.typings.contact.Contact">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nif_api.typings.contact.</span></span><span class="sig-name descname"><span class="pre">Contact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contact</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/contact.html#Contact"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.contact.Contact" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
 </section>
-<section id="nif-api-typings-function-module">
-<h2>nif_api.typings.function module<a class="headerlink" href="#nif-api-typings-function-module" title="Permalink to this headline"></a></h2>
+<section id="module-nif_api.typings.function">
+<span id="nif-api-typings-function-module"></span><h2>nif_api.typings.function module<a class="headerlink" href="#module-nif_api.typings.function" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nif_api.typings.function.Function">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nif_api.typings.function.</span></span><span class="sig-name descname"><span class="pre">Function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function_</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/function.html#Function"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.function.Function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
 </section>
-<section id="nif-api-typings-functions-module">
-<h2>nif_api.typings.functions module<a class="headerlink" href="#nif-api-typings-functions-module" title="Permalink to this headline"></a></h2>
+<section id="module-nif_api.typings.functions">
+<span id="nif-api-typings-functions-module"></span><h2>nif_api.typings.functions module<a class="headerlink" href="#module-nif_api.typings.functions" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nif_api.typings.functions.Functions">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nif_api.typings.functions.</span></span><span class="sig-name descname"><span class="pre">Functions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">functions</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/functions.html#Functions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.functions.Functions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
 </section>
-<section id="nif-api-typings-functiontype-module">
-<h2>nif_api.typings.functiontype module<a class="headerlink" href="#nif-api-typings-functiontype-module" title="Permalink to this headline"></a></h2>
+<section id="module-nif_api.typings.functiontype">
+<span id="nif-api-typings-functiontype-module"></span><h2>nif_api.typings.functiontype module<a class="headerlink" href="#module-nif_api.typings.functiontype" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nif_api.typings.functiontype.FunctionType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nif_api.typings.functiontype.</span></span><span class="sig-name descname"><span class="pre">FunctionType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/functiontype.html#FunctionType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.functiontype.FunctionType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
 </section>
-<section id="nif-api-typings-gender-module">
-<h2>nif_api.typings.gender module<a class="headerlink" href="#nif-api-typings-gender-module" title="Permalink to this headline"></a></h2>
+<section id="module-nif_api.typings.gender">
+<span id="nif-api-typings-gender-module"></span><h2>nif_api.typings.gender module<a class="headerlink" href="#module-nif_api.typings.gender" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nif_api.typings.gender.Gender">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nif_api.typings.gender.</span></span><span class="sig-name descname"><span class="pre">Gender</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gender</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/gender.html#Gender"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.gender.Gender" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
 </section>
-<section id="nif-api-typings-hello-module">
-<h2>nif_api.typings.hello module<a class="headerlink" href="#nif-api-typings-hello-module" title="Permalink to this headline"></a></h2>
+<section id="module-nif_api.typings.hello">
+<span id="nif-api-typings-hello-module"></span><h2>nif_api.typings.hello module<a class="headerlink" href="#module-nif_api.typings.hello" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nif_api.typings.hello.Hello">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nif_api.typings.hello.</span></span><span class="sig-name descname"><span class="pre">Hello</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hello</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/hello.html#Hello"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.hello.Hello" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
 </section>
-<section id="nif-api-typings-helpers-module">
-<h2>nif_api.typings.helpers module<a class="headerlink" href="#nif-api-typings-helpers-module" title="Permalink to this headline"></a></h2>
+<section id="module-nif_api.typings.helpers">
+<span id="nif-api-typings-helpers-module"></span><h2>nif_api.typings.helpers module<a class="headerlink" href="#module-nif_api.typings.helpers" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="nif_api.typings.helpers.del_by_value">
+<span class="sig-prename descclassname"><span class="pre">nif_api.typings.helpers.</span></span><span class="sig-name descname"><span class="pre">del_by_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/helpers.html#del_by_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.helpers.del_by_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nif_api.typings.helpers.del_keys">
+<span class="sig-prename descclassname"><span class="pre">nif_api.typings.helpers.</span></span><span class="sig-name descname"><span class="pre">del_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">del_none</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/helpers.html#del_keys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.helpers.del_keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deltes keys given in list</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nif_api.typings.helpers.del_whitelist">
+<span class="sig-prename descclassname"><span class="pre">nif_api.typings.helpers.</span></span><span class="sig-name descname"><span class="pre">del_whitelist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">whitelist</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/helpers.html#del_whitelist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.helpers.del_whitelist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes all keys not in whitelist, not recursive</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nif_api.typings.helpers.rename_key">
+<span class="sig-prename descclassname"><span class="pre">nif_api.typings.helpers.</span></span><span class="sig-name descname"><span class="pre">rename_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/helpers.html#rename_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.helpers.rename_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maps keys to values in dict</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nif_api.typings.helpers.rename_keys">
+<span class="sig-prename descclassname"><span class="pre">nif_api.typings.helpers.</span></span><span class="sig-name descname"><span class="pre">rename_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/helpers.html#rename_keys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.helpers.rename_keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a list of tuples
+&#64;todo see if all(isinstance(item, tuple) for item in keys) makes sense</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nif_api.typings.helpers.snake_case">
+<span class="sig-prename descclassname"><span class="pre">nif_api.typings.helpers.</span></span><span class="sig-name descname"><span class="pre">snake_case</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/helpers.html#snake_case"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.helpers.snake_case" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nif_api.typings.helpers.unpack">
+<span class="sig-prename descclassname"><span class="pre">nif_api.typings.helpers.</span></span><span class="sig-name descname"><span class="pre">unpack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/helpers.html#unpack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.helpers.unpack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unpacks a zeep response object</p>
+</dd></dl>
+
 </section>
-<section id="nif-api-typings-license-module">
-<h2>nif_api.typings.license module<a class="headerlink" href="#nif-api-typings-license-module" title="Permalink to this headline"></a></h2>
+<section id="module-nif_api.typings.license">
+<span id="nif-api-typings-license-module"></span><h2>nif_api.typings.license module<a class="headerlink" href="#module-nif_api.typings.license" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nif_api.typings.license.License">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nif_api.typings.license.</span></span><span class="sig-name descname"><span class="pre">License</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/license.html#License"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.license.License" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
 </section>
-<section id="nif-api-typings-organization-module">
-<h2>nif_api.typings.organization module<a class="headerlink" href="#nif-api-typings-organization-module" title="Permalink to this headline"></a></h2>
+<section id="module-nif_api.typings.organization">
+<span id="nif-api-typings-organization-module"></span><h2>nif_api.typings.organization module<a class="headerlink" href="#module-nif_api.typings.organization" title="Permalink to this headline">¶</a></h2>
+<section id="maps-a-organization-object">
+<h3>Maps a organization object<a class="headerlink" href="#maps-a-organization-object" title="Permalink to this headline">¶</a></h3>
+<p>NIF api obj -&gt; Lungo api obj</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="nif_api.typings.organization.Organization">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nif_api.typings.organization.</span></span><span class="sig-name descname"><span class="pre">Organization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">organization</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">org_structure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/organization.html#Organization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.organization.Organization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
 </section>
-<section id="nif-api-typings-organizations-module">
-<h2>nif_api.typings.organizations module<a class="headerlink" href="#nif-api-typings-organizations-module" title="Permalink to this headline"></a></h2>
 </section>
-<section id="nif-api-typings-organizationtype-module">
-<h2>nif_api.typings.organizationtype module<a class="headerlink" href="#nif-api-typings-organizationtype-module" title="Permalink to this headline"></a></h2>
+<section id="module-nif_api.typings.organizations">
+<span id="nif-api-typings-organizations-module"></span><h2>nif_api.typings.organizations module<a class="headerlink" href="#module-nif_api.typings.organizations" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nif_api.typings.organizations.Organizations">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nif_api.typings.organizations.</span></span><span class="sig-name descname"><span class="pre">Organizations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">organizations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">org_structure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/organizations.html#Organizations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.organizations.Organizations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
 </section>
-<section id="nif-api-typings-orgstructure-module">
-<h2>nif_api.typings.orgstructure module<a class="headerlink" href="#nif-api-typings-orgstructure-module" title="Permalink to this headline"></a></h2>
+<section id="module-nif_api.typings.organizationtype">
+<span id="nif-api-typings-organizationtype-module"></span><h2>nif_api.typings.organizationtype module<a class="headerlink" href="#module-nif_api.typings.organizationtype" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nif_api.typings.organizationtype.OrganizationType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nif_api.typings.organizationtype.</span></span><span class="sig-name descname"><span class="pre">OrganizationType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">organization_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/organizationtype.html#OrganizationType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.organizationtype.OrganizationType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
 </section>
-<section id="nif-api-typings-person-module">
-<h2>nif_api.typings.person module<a class="headerlink" href="#nif-api-typings-person-module" title="Permalink to this headline"></a></h2>
+<section id="module-nif_api.typings.orgstructure">
+<span id="nif-api-typings-orgstructure-module"></span><h2>nif_api.typings.orgstructure module<a class="headerlink" href="#module-nif_api.typings.orgstructure" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nif_api.typings.orgstructure.OrgStructure">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nif_api.typings.orgstructure.</span></span><span class="sig-name descname"><span class="pre">OrgStructure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">organization</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/orgstructure.html#OrgStructure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.orgstructure.OrgStructure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
 </section>
-<section id="nif-api-typings-persons-module">
-<h2>nif_api.typings.persons module<a class="headerlink" href="#nif-api-typings-persons-module" title="Permalink to this headline"></a></h2>
+<section id="module-nif_api.typings.person">
+<span id="nif-api-typings-person-module"></span><h2>nif_api.typings.person module<a class="headerlink" href="#module-nif_api.typings.person" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nif_api.typings.person.Person">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nif_api.typings.person.</span></span><span class="sig-name descname"><span class="pre">Person</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">person</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/person.html#Person"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.person.Person" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
 </section>
-<section id="nif-api-typings-payment-module">
-<h2>nif_api.typings.payment module<a class="headerlink" href="#nif-api-typings-payment-module" title="Permalink to this headline"></a></h2>
+<section id="module-nif_api.typings.persons">
+<span id="nif-api-typings-persons-module"></span><h2>nif_api.typings.persons module<a class="headerlink" href="#module-nif_api.typings.persons" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nif_api.typings.persons.Persons">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nif_api.typings.persons.</span></span><span class="sig-name descname"><span class="pre">Persons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">persons</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/persons.html#Persons"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.persons.Persons" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
 </section>
-<section id="nif-api-typings-payments-module">
-<h2>nif_api.typings.payments module<a class="headerlink" href="#nif-api-typings-payments-module" title="Permalink to this headline"></a></h2>
+<section id="module-nif_api.typings.payment">
+<span id="nif-api-typings-payment-module"></span><h2>nif_api.typings.payment module<a class="headerlink" href="#module-nif_api.typings.payment" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nif_api.typings.payment.Payment">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nif_api.typings.payment.</span></span><span class="sig-name descname"><span class="pre">Payment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/payment.html#Payment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.payment.Payment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
 </section>
-<section id="nif-api-typings-qualification-module">
-<h2>nif_api.typings.qualification module<a class="headerlink" href="#nif-api-typings-qualification-module" title="Permalink to this headline"></a></h2>
+<section id="module-nif_api.typings.payments">
+<span id="nif-api-typings-payments-module"></span><h2>nif_api.typings.payments module<a class="headerlink" href="#module-nif_api.typings.payments" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nif_api.typings.payments.Payments">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nif_api.typings.payments.</span></span><span class="sig-name descname"><span class="pre">Payments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payments</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/nif_api/typings/payments.html#Payments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nif_api.typings.payments.Payments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
 </section>
-<section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this headline"></a></h2>
+<section id="module-nif_api.typings.qualification">
+<span id="nif-api-typings-qualification-module"></span><h2>nif_api.typings.qualification module<a class="headerlink" href="#module-nif_api.typings.qualification" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-nif_api.typings">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-nif_api.typings" title="Permalink to this headline">¶</a></h2>
 </section>
 </section>
 
 
-           </div>
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright Norges Luftsportforbund.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
+</div>
+            </div>
           </div>
     <a href="https://github.com/luftsport/nif-api">
         <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
     </a>
 
-          <footer>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright Norges Luftsportforbund.</p>
-  </div>
-
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-  
- 
-<div>
-    Code is available on <a href="https://github.com/luftsport/nif-api">https://github.com/luftsport/nif-api</a>
-</div>
-<!-- your html code here -->
-
-
-</footer>
-        </div>
-      </div>
-    </section>
-  </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
-
-</body>
+      </page>
+    </div></div>
+    
+    
+  </body>
 </html>
