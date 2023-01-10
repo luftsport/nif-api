@@ -32,13 +32,15 @@ class Payment:
                 ('receiver_org_id', 'payment_receiver_org_id'),
                 ('person_id', 'relation_id_customer'),
                 ('person_type', 'relation_type_id_customer'),
-                ('org_id', 'product_type')  # Hackish for 376 in NIF
+                # ('org_id', 'product_type')  # Hackish for 376 in NIF
                 ]
 
         self.value = snake_case(self.value)
         self.value = del_by_value(self.value, None)
         self.value = del_keys(self.value, _del_keys)
         self.value = rename_keys(self.value, keys)
+
+        self.value['org_id'] = self.value.get('invoicing_org_id', 376)
 
         for k, v in self.value.items():
             if isinstance(v, decimal.Decimal) is True:
