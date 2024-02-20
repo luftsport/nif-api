@@ -22,7 +22,6 @@ class CompetenceType:
         try:
             return ''.join(ElementTree.fromstring(text).itertext())
         except Exception as e:
-            print('ERR', e)
             pass
 
         try:
