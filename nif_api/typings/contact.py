@@ -2,7 +2,13 @@ from .helpers import del_keys, del_by_value
 
 
 class Contact:
-    def __init__(self, contact):
+    def __init__(self, contact, alternate=False):
+
+        if alternate is True:
+            contact['street_address'] = contact['alternate_address']
+            contact['city'] = contact['alternate_city']
+            contact['zip_code'] = contact['alternate_postnumber']
+
 
         self.delkeys = ['name',
                         'alternate_address',
