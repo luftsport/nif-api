@@ -3,7 +3,7 @@ from dateutil import tz
 from zeep import Client
 from zeep.wsse.username import UsernameToken
 from zeep.transports import Transport
-
+from requests import Session
 from .logger import LoggingPlugin
 from .typings import (Changes,
                       Organizations,
