@@ -51,7 +51,7 @@ class Organization:
 
         self.value = del_by_value(self.value, None)
 
-        self.value['contact'] = Contact(self.value.get('contact', {})).value
+        self.value['contact'] = Contact(self.value.get('contact', {}), True).value
 
         if 'org_structures_down' in self.value:
             self.value['_down'] = OrgStructure(self.value['org_structures_down'], 'child').value
