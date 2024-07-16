@@ -3,7 +3,7 @@ from dateutil import tz
 from zeep import Client
 from zeep.wsse.username import UsernameToken
 from zeep.transports import Transport
-from requests import Session
+from requests import Session, urllib3
 from .logger import LoggingPlugin
 from .typings import (Changes,
                       Organizations,
@@ -26,6 +26,10 @@ from .typings import (Changes,
                       OrganizationTypes,
                       IntegrationUser)
 
+VERIFY_SSL = False
+if VERIFY_SSL is False:
+    # Disables all those warnings
+    urllib3.disable_warnings()
 
 class NIFApiError(Exception):
     """Base class"""
@@ -99,7 +103,7 @@ class NifApi:
 
 
 class NifApiSynchronization(NifApi):
-    def __init__(self, username, password, realm, log_file, test_login=True, verify_ssl=False):
+    def __init__(self, username, password, realm, log_file, test_login=True, verify_ssl=VERIFY_SSL):
 
         super().__init__(realm)
         session = Session()
@@ -209,7 +213,7 @@ class NifApiSynchronization(NifApi):
 
 
 class NifApiCompetence(NifApi):
-    def __init__(self, username, password, realm, log_file, test_login=True, verify_ssl=False):
+    def __init__(self, username, password, realm, log_file, test_login=True, verify_ssl=VERIFY_SSL):
 
         super().__init__(realm)
         session = Session()
@@ -273,7 +277,7 @@ class NifApiCompetence(NifApi):
 
 
 class NifApiCourse2(NifApi):
-    def __init__(self, username, password, realm, log_file, test_login=True, verify_ssl=False):
+    def __init__(self, username, password, realm, log_file, test_login=True, verify_ssl=VERIFY_SSL):
         super().__init__(realm)
         session = Session()
         session.verify = verify_ssl
@@ -314,7 +318,7 @@ class NifApiCourse2(NifApi):
 
 
 class NifApiPerson(NifApi):
-    def __init__(self, username, password, realm, log_file, test_login=True, verify_ssl=False):
+    def __init__(self, username, password, realm, log_file, test_login=True, verify_ssl=VERIFY_SSL):
 
         super().__init__(realm)
         session = Session()
@@ -352,7 +356,7 @@ class NifApiPerson(NifApi):
 
 
 class NifApiIntegration(NifApi):
-    def __init__(self, username, password, realm, log_file, test_login=True, verify_ssl=False):
+    def __init__(self, username, password, realm, log_file, test_login=True, verify_ssl=VERIFY_SSL):
 
         super().__init__(realm)
         session = Session()
@@ -560,7 +564,7 @@ class NifApiIntegration(NifApi):
 class NifApiUser(NifApi):
     """"""
 
-    def __init__(self, username, password, realm, log_file, test_login=True, verify_ssl=False):
+    def __init__(self, username, password, realm, log_file, test_login=True, verify_ssl=VERIFY_SSL):
 
         super().__init__(realm)
         session = Session()
@@ -611,7 +615,7 @@ class NifApiUser(NifApi):
 class NifApiPayments(NifApi):
     """Uses club user"""
 
-    def __init__(self, username, password, realm, log_file, test_login=True, verify_ssl=False):
+    def __init__(self, username, password, realm, log_file, test_login=True, verify_ssl=VERIFY_SSL):
 
         super().__init__(realm)
         session = Session()
