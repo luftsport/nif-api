@@ -99,10 +99,12 @@ class NifApi:
 
 
 class NifApiSynchronization(NifApi):
-    def __init__(self, username, password, realm, log_file, test_login=True):
+    def __init__(self, username, password, realm, log_file, test_login=True, verify_ssl=False):
 
         super().__init__(realm)
-        transport = Transport(timeout=30)
+        session = Session()
+        session.verify = verify_ssl
+        transport = Transport(timeout=30, session=session)
         self.client = Client(self.NIF_SYNC_URL,
                              wsse=UsernameToken(username, password),
                              plugins=[LoggingPlugin(log_file)],
@@ -207,10 +209,12 @@ class NifApiSynchronization(NifApi):
 
 
 class NifApiCompetence(NifApi):
-    def __init__(self, username, password, realm, log_file, test_login=True):
+    def __init__(self, username, password, realm, log_file, test_login=True, verify_ssl=False):
 
         super().__init__(realm)
-        transport = Transport(timeout=1000)
+        session = Session()
+        session.verify = verify_ssl
+        transport = Transport(timeout=30, session=session)
         self.client = Client(self.NIF_INTEGRATION_COMPETENCE_URL,
                              wsse=UsernameToken(username, password),
                              plugins=[LoggingPlugin(log_file)],
@@ -269,10 +273,11 @@ class NifApiCompetence(NifApi):
 
 
 class NifApiCourse2(NifApi):
-    def __init__(self, username, password, realm, log_file, test_login=True):
+    def __init__(self, username, password, realm, log_file, test_login=True, verify_ssl=False):
         super().__init__(realm)
-        transport = Transport(timeout=1000)
-
+        session = Session()
+        session.verify = verify_ssl
+        transport = Transport(timeout=1000, session=session)
         self.client = Client(self.NIF_COURSE2_URL,
                              wsse=UsernameToken(username, password),
                              plugins=[LoggingPlugin(log_file)],
@@ -309,10 +314,12 @@ class NifApiCourse2(NifApi):
 
 
 class NifApiPerson(NifApi):
-    def __init__(self, username, password, realm, log_file, test_login=True):
+    def __init__(self, username, password, realm, log_file, test_login=True, verify_ssl=False):
 
         super().__init__(realm)
-        transport = Transport(timeout=1000)
+        session = Session()
+        session.verify = verify_ssl
+        transport = Transport(timeout=1000, session=session)
         self.client = Client(self.NIF_PERSON_URL,
                              wsse=UsernameToken(username, password),
                              plugins=[LoggingPlugin(log_file)],
@@ -345,10 +352,12 @@ class NifApiPerson(NifApi):
 
 
 class NifApiIntegration(NifApi):
-    def __init__(self, username, password, realm, log_file, test_login=True):
+    def __init__(self, username, password, realm, log_file, test_login=True, verify_ssl=False):
 
         super().__init__(realm)
-        transport = Transport(timeout=30)
+        session = Session()
+        session.verify = verify_ssl
+        transport = Transport(timeout=30, session=session)
         self.client = Client(self.NIF_INTEGRATION_URL,
                              wsse=UsernameToken(username, password),
                              plugins=[LoggingPlugin(log_file)],
@@ -551,10 +560,12 @@ class NifApiIntegration(NifApi):
 class NifApiUser(NifApi):
     """"""
 
-    def __init__(self, username, password, realm, log_file, test_login=True):
+    def __init__(self, username, password, realm, log_file, test_login=True, verify_ssl=False):
 
         super().__init__(realm)
-        transport = Transport(timeout=1000)
+        session = Session()
+        session.verify = verify_ssl
+        transport = Transport(timeout=1000, session=session)
         self.client = Client(self.NIF_USER_URL,
                              wsse=UsernameToken(username, password),
                              plugins=[LoggingPlugin(log_file)],
@@ -600,10 +611,12 @@ class NifApiUser(NifApi):
 class NifApiPayments(NifApi):
     """Uses club user"""
 
-    def __init__(self, username, password, realm, log_file, test_login=True):
+    def __init__(self, username, password, realm, log_file, test_login=True, verify_ssl=False):
 
         super().__init__(realm)
-        transport = Transport(timeout=1000)
+        session = Session()
+        session.verify = verify_ssl
+        transport = Transport(timeout=1000, session=session)
         self.client = Client(self.NIF_PAYMENT_URL,
                              wsse=UsernameToken(username, password),
                              plugins=[LoggingPlugin(log_file)],
