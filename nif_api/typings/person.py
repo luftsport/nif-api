@@ -44,6 +44,10 @@ class Person:
         elif self.value['address'].get('email', None) is not None:
             self.value.pop('email', None)
 
+        # Strip primary email
+        if 'primary_email' in self.value:
+            self.value['primary_email'] = self.value['primary_email'].strip()
+
         # Fix datetime if problems (1-1-1-0-0)
         if isinstance(self.value.get('birth_date', None), datetime) is False or \
                 datetime.combine(datetime.min.date(), datetime.min.time()) == self.value.get('birth_date', None):
