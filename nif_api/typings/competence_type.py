@@ -74,7 +74,6 @@ class CompetenceType:
                      'weight']
 
         self.value = del_whitelist(self.value, whitelist)
-        CompetenceType
         self.value['description'] = self._remove_tags(self.value.get('description', ''))
         self.value['prequisites_text'] = self._remove_tags(self.value.get('prequisites_text', ''))
         self.value['title'] = self._remove_tags(self.value.get('title', ''))
@@ -89,3 +88,4 @@ class CompetenceType:
         self.value['durations'] = self.value.get('durations', {}).get('duration', [])
         self.value['categories'] = self.value.get('categories', {}).get('course_category', [])
         self.value['instructors'] = self.value.get('instructors', {}).get('Person', [])
+        self.value['files'] = self.value.get('files', {}).get('file', [])
