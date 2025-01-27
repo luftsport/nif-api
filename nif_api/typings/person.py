@@ -40,15 +40,15 @@ class Person:
 
         # Fix email
         if len(self.value['address'].get('email', '').strip()) > 2:
-            self.value['address']['email'] = self.value['address'].get('email', '').split(';')
+            self.value['address']['email'] = [x.strip().lower() for x in self.value['address'].get('email', '').split(';')]
         elif self.value['address'].get('email', None) is not None:
             self.value.pop('email', None)
 
         # Strip primary email
         if 'primary_email' in self.value:
-            self.value['primary_email'] = self.value['primary_email'].strip()
-        elif len(self.value['address']['email'])>0:
-            self.value['primary_email'] = self.value['address']['email'][0].strip()
+            self.value['primary_email'] = self.value['primary_email'].strip().lower()
+        elif len(self.value['address'].get('email', []))>0:
+            self.value['primary_email'] = self.value['address']['email'][0].strip().lower()
 
         # Fix datetime if problems (1-1-1-0-0)
         if isinstance(self.value.get('birth_date', None), datetime) is False or \
