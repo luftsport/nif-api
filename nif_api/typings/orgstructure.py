@@ -25,7 +25,7 @@ class OrgStructure:
 
             # if row['org_id_{}'.format(self.direction)] not in self.disallow_ids and row[
             #        'org_type_id_{}'.format(self.direction)] not in self.disallow_types:
-
-            new_value.append({'id': row['org_id_{}'.format(self.direction)],
-                              'type': row['org_type_id_{}'.format(self.direction)]})
+            if row['is_active'] is True:
+                new_value.append({'id': row['org_id_{}'.format(self.direction)],
+                                  'type': row['org_type_id_{}'.format(self.direction)]})
         self.value = new_value
