@@ -13,7 +13,8 @@ class IntegrationUser:
         self.status, value = unpack(integration_user, 'Person', True)
 
         if self.status is True:
-            self.value = value.get('Data', b'')
+            """Old 'Data' key is removed"""
+            self.value = value
         else:
             self.value = b''
 
