@@ -4,11 +4,10 @@ from .helpers import del_keys, del_by_value
 class Contact:
     def __init__(self, contact, alternate=False):
 
-        if alternate is True:
+        if alternate is True and (contact.get('alternate_address', None) is not None or contact.get('alternate_city', None) is not None or contact.get('alternate_postnumber', None) is not None):
             contact['street_address'] = contact['alternate_address']
             contact['city'] = contact['alternate_city']
             contact['zip_code'] = contact['alternate_postnumber']
-
 
         self.delkeys = ['name',
                         'alternate_address',
