@@ -9,6 +9,12 @@ class Contact:
             contact['city'] = contact['alternate_city']
             contact['zip_code'] = contact['alternate_postnumber']
 
+        # Clean up known invalid data
+        if contact.get('zip_code', None) == '9999':
+            contact.pop('zip_code', None)
+        if contact.get('city', None) == 'MANGLER POSTSTED':
+            contact.pop('city', None)
+
         self.delkeys = ['name',
                         'alternate_address',
                         'alternate_city',
