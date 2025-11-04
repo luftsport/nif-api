@@ -84,5 +84,5 @@ class Organization:
         #    self.value = fix_organization(self.value)
 
         if self.value['id'] in list(self.ORG_STRUCTURE.keys()):
-            self.value['activities'] = [self.ORG_STRUCTURE[self.value['id']]]
-            self.value['main_activity'] = self.ORG_STRUCTURE[self.value['id']]
+            self.value['activities'] = self.ORG_STRUCTURE[self.value['id']]
+            self.value['main_activity'] = self.ORG_STRUCTURE[self.value['id']][0]
