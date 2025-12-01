@@ -650,7 +650,7 @@ class NifApiPayments(NifApi):
 
         resp = self.client.service.GetPaymentDetailsByIds(payment_ids)
 
-        if 'Success' in resp and resp['Success'] is True and resp.get('PaymentDetails') is not None:
+        if 'Success' in resp and resp['Success'] is True and 'PaymentDetails' in resp:
             invoice_lines = Payments(resp)
             return invoice_lines.status, invoice_lines.value
         else:
